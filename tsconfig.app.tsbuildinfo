@@ -1,1 +1,1 @@
-{"root":["./src/app.tsx","./src/main.tsx","./src/vite-env.d.ts","./src/components/countycontent.tsx","./src/components/countysidebar.tsx","./src/components/maparea.tsx","./src/data/counties.ts"],"version":"5.6.3"}
+{"root":["./src/app.tsx","./src/main.tsx","./src/vite-env.d.ts","./src/components/countycontent.tsx","./src/components/countysidebar.tsx","./src/components/maparea.tsx","./src/components/oregonmap.tsx","./src/data/counties.ts"],"version":"5.6.3"}

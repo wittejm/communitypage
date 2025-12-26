@@ -1,14 +1,18 @@
+import { OregonMap } from './OregonMap'
+
 interface MapAreaProps {
   isCompact: boolean
+  selectedCounty: string | null
+  onSelectCounty: (countyName: string) => void
 }
 
-export function MapArea({ isCompact }: MapAreaProps) {
+export function MapArea({ isCompact, selectedCounty, onSelectCounty }: MapAreaProps) {
   return (
     <div className={`map-area ${isCompact ? 'compact' : 'full'}`}>
-      <div className="map-placeholder">
-        <div className="map-label">Oregon County Map</div>
-        <div className="map-subtitle">(Interactive map placeholder)</div>
-      </div>
+      <OregonMap
+        selectedCounty={selectedCounty}
+        onSelectCounty={onSelectCounty}
+      />
     </div>
   )
 }

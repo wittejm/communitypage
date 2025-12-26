@@ -23,7 +23,11 @@ function App() {
       </header>
 
       <main className="main-content">
-        <MapArea isCompact={selectedCounty !== null} />
+        <MapArea
+          isCompact={selectedCounty !== null}
+          selectedCounty={selectedCounty}
+          onSelectCounty={handleSelectCounty}
+        />
 
         {selectedCountyData && (
           <CountyContent county={selectedCountyData} />
