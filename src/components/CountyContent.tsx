@@ -2,12 +2,16 @@ import { County } from '../data/counties'
 
 interface CountyContentProps {
   county: County
+  onClose: () => void
 }
 
-export function CountyContent({ county }: CountyContentProps) {
+export function CountyContent({ county, onClose }: CountyContentProps) {
   return (
     <div className="county-content">
-      <h1>{county.name} County</h1>
+      <div className="county-header">
+        <h1 onClick={onClose}>{county.name} County</h1>
+        <button className="close-button" onClick={onClose}>&gt;&gt;</button>
+      </div>
 
       <div className="posts-list">
         {county.posts.map((post) => (

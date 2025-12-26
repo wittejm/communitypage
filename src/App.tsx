@@ -9,7 +9,12 @@ function App() {
   const [selectedCounty, setSelectedCounty] = useState<string | null>(null)
 
   const handleSelectCounty = (countyName: string) => {
-    setSelectedCounty(countyName)
+    // Empty string means deselect
+    setSelectedCounty(countyName === '' ? null : countyName)
+  }
+
+  const handleCloseCounty = () => {
+    setSelectedCounty(null)
   }
 
   const selectedCountyData = oregonCounties.find(
@@ -30,7 +35,10 @@ function App() {
         />
 
         {selectedCountyData && (
-          <CountyContent county={selectedCountyData} />
+          <CountyContent
+            county={selectedCountyData}
+            onClose={handleCloseCounty}
+          />
         )}
 
         <CountySidebar

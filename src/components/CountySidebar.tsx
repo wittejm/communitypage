@@ -6,6 +6,15 @@ interface CountySidebarProps {
 }
 
 export function CountySidebar({ selectedCounty, onSelectCounty }: CountySidebarProps) {
+  const handleCountyClick = (countyName: string) => {
+    // Toggle: if clicking the already selected county, deselect it
+    if (selectedCounty === countyName) {
+      onSelectCounty('')
+    } else {
+      onSelectCounty(countyName)
+    }
+  }
+
   return (
     <div className="county-sidebar">
       <h2>Oregon Counties</h2>
@@ -14,7 +23,7 @@ export function CountySidebar({ selectedCounty, onSelectCounty }: CountySidebarP
           <li
             key={county.name}
             className={selectedCounty === county.name ? 'selected' : ''}
-            onClick={() => onSelectCounty(county.name)}
+            onClick={() => handleCountyClick(county.name)}
           >
             {county.name}
           </li>
