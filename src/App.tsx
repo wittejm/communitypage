@@ -1,34 +1,40 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import { MapArea } from './components/MapArea'
+import { CountySidebar } from './components/CountySidebar'
+import { CountyContent } from './components/CountyContent'
+import { oregonCounties } from './data/counties'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [selectedCounty, setSelectedCounty] = useState<string | null>(null)
+
+  const handleSelectCounty = (countyName: string) => {
+    setSelectedCounty(countyName)
+  }
+
+  const selectedCountyData = oregonCounties.find(
+    (county) => county.name === selectedCounty
+  )
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div className="app">
+      <header className="app-header">
+        <h1>Oregon Record Expungement Community</h1>
+      </header>
+
+      <main className="main-content">
+        <MapArea isCompact={selectedCounty !== null} />
+
+        {selectedCountyData && (
+          <CountyContent county={selectedCountyData} />
+        )}
+
+        <CountySidebar
+          selectedCounty={selectedCounty}
+          onSelectCounty={handleSelectCounty}
+        />
+      </main>
+    </div>
   )
 }
 

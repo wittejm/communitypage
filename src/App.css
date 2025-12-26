@@ -1,42 +1,245 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+* {
+  box-sizing: border-box;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-header {
+  background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+  color: white;
+  padding: 1.5rem 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.app-header h1 {
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.main-content {
+  display: flex;
+  flex: 1;
+  gap: 1rem;
+  padding: 1rem;
+  max-height: calc(100vh - 80px);
+}
+
+/* Map Area */
+.map-area {
+  background: #f3f4f6;
+  border: 2px solid #d1d5db;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s ease;
+  min-height: 400px;
+}
+
+.map-area.full {
+  flex: 0 0 75%;
+}
+
+.map-area.compact {
+  flex: 0 0 25%;
+}
+
+.map-placeholder {
   text-align: center;
+  color: #6b7280;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.map-label {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
 }
 
-@keyframes logo-spin {
+.map-subtitle {
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+/* County Content */
+.county-content {
+  flex: 1;
+  background: white;
+  border-radius: 8px;
+  padding: 2rem;
+  overflow-y: auto;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  animation: slideIn 0.4s ease;
+}
+
+@keyframes slideIn {
   from {
-    transform: rotate(0deg);
+    opacity: 0;
+    transform: translateX(-20px);
   }
   to {
-    transform: rotate(360deg);
+    opacity: 1;
+    transform: translateX(0);
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+.county-content h1 {
+  margin: 0 0 1.5rem 0;
+  color: #1f2937;
+  font-size: 2rem;
+  border-bottom: 3px solid #3b82f6;
+  padding-bottom: 0.5rem;
+}
+
+.posts-list {
+  margin-bottom: 2rem;
+}
+
+.post-card {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+}
+
+.post-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.post-card h3 {
+  margin: 0 0 0.75rem 0;
+  color: #1f2937;
+  font-size: 1.1rem;
+}
+
+.post-card p {
+  margin: 0;
+  color: #4b5563;
+  line-height: 1.6;
+}
+
+/* Share Area */
+.share-area {
+  background: #f0f9ff;
+  border: 2px solid #3b82f6;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-top: 2rem;
+}
+
+.share-area h3 {
+  margin: 0 0 1rem 0;
+  color: #1e3a8a;
+  font-size: 1.2rem;
+}
+
+.share-input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+  resize: vertical;
+}
+
+.share-input:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.post-button {
+  background: #3b82f6;
+  color: white;
+  border: none;
+  padding: 0.75rem 2rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.post-button:hover {
+  background: #2563eb;
+}
+
+.post-button:active {
+  background: #1d4ed8;
+}
+
+/* County Sidebar */
+.county-sidebar {
+  flex: 0 0 250px;
+  background: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  overflow-y: auto;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.county-sidebar h2 {
+  margin: 0 0 1rem 0;
+  color: #1f2937;
+  font-size: 1.3rem;
+  border-bottom: 2px solid #e5e7eb;
+  padding-bottom: 0.5rem;
+}
+
+.county-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.county-list li {
+  padding: 0.75rem 0.5rem;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.2s;
+  color: #374151;
+  font-size: 0.95rem;
+}
+
+.county-list li:hover {
+  background: #f3f4f6;
+  padding-left: 1rem;
+}
+
+.county-list li.selected {
+  background: #dbeafe;
+  color: #1e40af;
+  font-weight: 600;
+  padding-left: 1rem;
+  border-left: 4px solid #3b82f6;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .main-content {
+    flex-direction: column;
+    max-height: none;
   }
-}
 
-.card {
-  padding: 2em;
-}
+  .map-area.full,
+  .map-area.compact {
+    flex: 0 0 auto;
+    width: 100%;
+    min-height: 300px;
+  }
 
-.read-the-docs {
-  color: #888;
+  .county-sidebar {
+    flex: 0 0 auto;
+    width: 100%;
+  }
 }
