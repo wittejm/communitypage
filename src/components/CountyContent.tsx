@@ -24,9 +24,18 @@ export function CountyContent({ county, onClose }: CountyContentProps) {
 
       <div className="share-area">
         <h3>Share Your Experience</h3>
+        <div className="form-group">
+          <label htmlFor="post-title">Title:</label>
+          <input
+            id="post-title"
+            type="text"
+            className="share-input"
+            placeholder="Give your post a title..."
+          />
+        </div>
         <textarea
           className="share-input"
-          placeholder="Share information about record expungement in this county..."
+          placeholder="Share your experience with record expungement in this county..."
           rows={4}
         />
         <button className="post-button">Post</button>

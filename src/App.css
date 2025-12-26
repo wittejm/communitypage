@@ -39,6 +39,7 @@
   justify-content: center;
   transition: all 0.4s ease;
   min-height: 400px;
+  position: relative;
 }
 
 .map-area.full {
@@ -88,6 +89,23 @@
   fill: #60a5fa;              /* Darker blue when selected */
   stroke: #2563eb;             /* Darker border for selected */
   stroke-width: 2;
+}
+
+/* County hover label */
+.county-hover-label {
+  position: absolute;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1f2937;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  pointer-events: none;
+  z-index: 10;
 }
 
 /* County Content */
@@ -196,6 +214,18 @@
   font-size: 1.2rem;
 }
 
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #374151;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
 .share-input {
   width: 100%;
   padding: 0.75rem;
@@ -277,6 +307,18 @@
   font-weight: 600;
   padding-left: 1rem;
   border-left: 4px solid #3b82f6;
+}
+
+.county-list li.hovered {
+  background: #f0f9ff;
+  padding-left: 1rem;
+  border-left: 3px solid #93c5fd;
+}
+
+.post-count {
+  color: #9ca3af;
+  font-size: 0.85rem;
+  font-weight: normal;
 }
 
 /* Responsive */

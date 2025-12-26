@@ -7,6 +7,7 @@ import { oregonCounties } from './data/counties'
 
 function App() {
   const [selectedCounty, setSelectedCounty] = useState<string | null>(null)
+  const [hoveredCounty, setHoveredCounty] = useState<string | null>(null)
 
   const handleSelectCounty = (countyName: string) => {
     // Empty string means deselect
@@ -15,6 +16,10 @@ function App() {
 
   const handleCloseCounty = () => {
     setSelectedCounty(null)
+  }
+
+  const handleHoverCounty = (countyName: string | null) => {
+    setHoveredCounty(countyName)
   }
 
   const selectedCountyData = oregonCounties.find(
@@ -31,7 +36,9 @@ function App() {
         <MapArea
           isCompact={selectedCounty !== null}
           selectedCounty={selectedCounty}
+          hoveredCounty={hoveredCounty}
           onSelectCounty={handleSelectCounty}
+          onHoverCounty={handleHoverCounty}
         />
 
         {selectedCountyData && (
@@ -43,6 +50,7 @@ function App() {
 
         <CountySidebar
           selectedCounty={selectedCounty}
+          hoveredCounty={hoveredCounty}
           onSelectCounty={handleSelectCounty}
         />
       </main>
